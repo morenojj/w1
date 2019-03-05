@@ -15,7 +15,7 @@ Route::get('/', function () {
 /**
  * Add A New Task
  */
-Route::post('/task', function (Request $request) {
+RRoute::post('/task', function (Request $request) {
     $validator = Validator::make($request->all(), [
         'name' => 'required|max:255',
     ]);
@@ -32,15 +32,12 @@ Route::post('/task', function (Request $request) {
 
     return redirect('/');
 });
-	
-	//
-});
 /**
  * Delete An Existing Task
  */
 Route::delete('/task/{id}', function ($id) {
     Task::findOrFail($id)->delete();
-
-    return redirect('/');
-})
-;
+	
+	return redirect('/');
+	//
+});
