@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 /**
  * Display All Tasks
  */
+Route::group(['middleware'=>['web']], function (){  
 Route::get('/', function () {
     $tasks = Task::orderBy('created_at', 'asc')->get();
 
@@ -15,7 +16,7 @@ Route::get('/', function () {
 /**
  * Add A New Task
  */
-RRoute::post('/task', function (Request $request) {
+Route::post('/task', function (Request $request) {
     $validator = Validator::make($request->all(), [
         'name' => 'required|max:255',
     ]);
@@ -40,4 +41,5 @@ Route::delete('/task/{id}', function ($id) {
 	
 	return redirect('/');
 	//
+});
 });
